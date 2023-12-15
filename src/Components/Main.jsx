@@ -19,7 +19,7 @@ const Main = () => {
           Buy now
         </div>
       </div>
-      <div className="md:w-[380px] mx-auto mt-6 mb-24 md:mb-0 w-[80%] h-[180px] md:h-[370px]">
+      <div className="md:w-[380px] mx-auto mt-2  mb-28 md:mb-0 w-[80%] h-[180px] md:h-[370px]">
         <img src={man} alt="man" className="w-full  shrink-0" />
       </div>
     </div>
