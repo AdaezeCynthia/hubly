@@ -1,58 +1,104 @@
-import React from "react";
-import Viss from "../assets/Viss.png";
-import man from "../assets/man.png";
+import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { BiMenu } from "react-icons/bi";
+import hubly from "../assets/hubly.svg";
+import { AiOutlineClose } from "react-icons/ai";
 
 const NavBar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="bg-white p-8 shadow-lg rounded-md lg:w-[70%] w-[100%] h-[60%]">
-        <img
-          src={Viss}
-          alt="Viss"
-          className=" absolute lg:py-[20px] lg:h-[60px] h-[30px] py-[10px] lg:right-[1090px] right-[395px]"
-        />
-        <p className="relative font-bold lg:right-[-350px] right-[-89px] lg:py-[17px] lg:text-[15px] text-[10px]  py-[10px] ">
-          About
-        </p>
-        <p className="relative font-bold lg:text-[15px] lg:right-[-420px] text-[10px] py-[10px]lg:text-[15px] right-[-130px] bottom-[25px] lg:py-[17px] lg:bottom-[58px]">
-          clothings
-        </p>
-        <p className="relative font-bold lg:right-[-520px] text-[10px] py-[10px] lg:text-[15px] bottom-[50px] right-[-190px] lg:py-[17px]  lg:bottom-[114px] ">
-          Accessories
-        </p>
-        <p className="relative font-bold lg:right-[-640px] right-[-260px] lg:text-[15px] text-[10px] py-[10px] lg:py-[17px]  bottom-[85px] lg:bottom-[172px]">
-          Services
-        </p>
-        <div>
-          <p className="relative font-bold lg:right-[-870px] text-[10px]  lg:text-[15px] py-[10px] right-[-342px] lg:py-[17px] lg:bottom-[230px] bottom-[120px]">
-            Log in
+    <>
+      <div className="flex w-full justify-between items-center bg-white">
+        <h1 className="text-black text-[28px] md:text-[48px] font-normal leading-normal">
+          Viss Fashions
+        </h1>
+        <div className="hidden lg:flex gap-[44px] text-black justify-center items-center ">
+          <p className="text-[24px] font-normal cursor-pointer hover:text-[#E87A14] hover:font-semibold leading-normal">
+            About
           </p>
-          <button className="relative lg:right-[-920px]  lg:text-[15px] right-[-390px] rounded-[2px] mx-[2px] lg:mx-[10px]  py-[3px] py[4px] lg:py-[7px] lg:px-[10px]  px-[5px] text-[10px] lg:rounded-[6px] bottom-[150px] lg:bottom-[270px] bg-[#E87A14] text-white">
-            Sign Up
-          </button>
+          <p className="text-[24px] font-normal cursor-pointer hover:text-[#E87A14] hover:font-semibold leading-normal">
+            Clothing
+          </p>
+          <p className="text-[24px] font-normal cursor-pointer hover:text-[#E87A14] hover:font-semibold leading-normal">
+            Accessories
+          </p>
+          <p className="text-[24px] font-normal cursor-pointer hover:text-[#E87A14] hover:font-semibold leading-normal">
+            Services
+          </p>
         </div>
-        <div>
-          <h2 className=" absolute font-bold font-poppins  text-blue-400 text-[15px] right-[285px] bottom-[410px] lg:right-[1070px] lg:bottom-[340px]">
-            TRENDIEST FASHION EVER
-          </h2>
-          <h2 className=" absolute right-[305px] bottom-[330px]  lg:right-[1090px] lg:bottom-[260px] lg:font-poppins">
-            When you are in doubt,
-            <br /> wear a Viss Fashions <br />
-            Denim
-          </h2>
-          <button className=" absolute lg:top-[470px] bottom-[290px] lg:right-[2185px] right-[420px] lg:mx-[10px] mx-[10px] lg:py-[7px] py-[3px] px-[1px]  lg:px-[10px] text-[10px] rounded-[6px]  bg-[#E87A14] text-white">
-            Buy Now
-          </button>
+        <div className="hidden lg:flex items-center gap-[48px]">
+          <Link
+            to="/login"
+            className="text-[24px] font-normal leading-normal cursor-pointer hover:text-[#E87A14] hover:font-semibold"
+          >
+            Log in
+          </Link>
+
+          <Link
+            to="/login"
+            className="bg-[#E87A14] text-white w-fit rounded-[20px] py-[16px] px-[48px]"
+          >
+            Sign up
+          </Link>
         </div>
-        <div>
-          <img
-            src={man}
-            alt="man"
-            className="lg:w-64 w-40 lg:h-65    absolute right-[50px] lg:right-[450px] top-[244px] lg:top-[245px]"
-          />
-        </div>
+        <button onClick={toggleMenu} className="items-center lg:hidden flex">
+          <BiMenu className="text-4xl cursor-pointer" />
+        </button>{" "}
+        {isOpen && (
+          <div className="fixed px-[20px] lg:hidden pt-5 top-0 left-0 w-screen text-[#00002F] text-[18px] leading-7 h-screen  flex flex-col justify-left  bg-white z-50">
+            <div className="flex flex-col items-center relative gap-8 py-[16px]">
+              <Link
+                to={"/"}
+                onClick={toggleMenu}
+                className="cursor-pointer mt-[48px] flex mx-auto hover:text-[#000075] hover:font-bold w-[82.55px] h-[50px] "
+              >
+                <img src={hubly} alt="logo" className="w-100%" />
+              </Link>
+              <button
+                //
+                className="absolute top-8 right-8 text-black"
+                onClick={toggleMenu}
+              >
+                <AiOutlineClose className=" text-2xl font-semibold" />
+              </button>
+              <div className="lg:hidden flex flex-col gap-[18px] text-black justify-center items-center ">
+                <p className="text-[24px] font-normal cursor-pointer hover:text-[#E87A14] hover:font-semibold leading-normal">
+                  About
+                </p>
+                <p className="text-[24px] font-normal cursor-pointer hover:text-[#E87A14] hover:font-semibold leading-normal">
+                  Clothing
+                </p>
+                <p className="text-[24px] font-normal cursor-pointer hover:text-[#E87A14] hover:font-semibold leading-normal">
+                  Accessories
+                </p>
+                <p className="text-[24px] font-normal cursor-pointer hover:text-[#E87A14] hover:font-semibold leading-normal">
+                  Services
+                </p>
+              </div>
+              <div className="lg:hidden flex  items-center gap-[48px]">
+                <Link
+                  to="/login"
+                  className="text-[24px] font-normal leading-normal cursor-pointer hover:text-[#E87A14] hover:font-semibold"
+                >
+                  Log in
+                </Link>
+
+                <Link
+                  to="/login"
+                  className="bg-[#E87A14] text-white w-fit rounded-[20px] py-[16px] px-[48px]"
+                >
+                  Sign up
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
-    </div>
+    </>
   );
 };
 
